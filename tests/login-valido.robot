@@ -1,22 +1,22 @@
 ***Settings***
 Library     AppiumLibrary
+Resource    ../resources/base.robot
+
+*** Variables ***
+${email}        teste@teste.com
+${password}     123456           
 
 ***Test Cases***
 Login Valido
-    Open Application    http://localhost:4723/wd/hub
-    ...                 automationName=UiAutomator2
-    ...                 platformVersion=8.1
-    ...                 platformName=Android
-    ...                 deviceName=emulator-5554
-    ...                 app=${EXECDIR}/app/qafood.apk
+    Open Session
 
     Wait Until Element Is Visible   accessibility_id=email          10
 
     Click Element                   accessibility_id=email
-    Input Text                      accessibility_id=email          teste@teste.com
+    Input Text                      accessibility_id=email          ${email}
     
     Click Element                   accessibility_id=password
-    Input Text                      accessibility_id=password       123456
+    Input Text                      accessibility_id=password       ${password}
 
     Click Element                   accessibility_id=login-button
 
